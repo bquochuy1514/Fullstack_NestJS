@@ -1,4 +1,9 @@
-import { IsEmail, IsNotEmpty, IsPhoneNumber } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsPhoneNumber,
+} from 'class-validator';
 
 export class CreateUserDto {
   @IsNotEmpty({ message: 'Name is required' })
@@ -12,9 +17,12 @@ export class CreateUserDto {
   password: string;
 
   @IsPhoneNumber('VN', { message: 'Phone number is not valid' })
+  @IsOptional()
   phone: string;
 
+  @IsOptional()
   address: string;
 
+  @IsOptional()
   image: string;
 }
